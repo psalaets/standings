@@ -1,0 +1,16 @@
+{
+  "name": "standings",
+  "version": "1.0.0",
+  "description": "Figure out 1st place, 2nd place, etc.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "standings",
+    "rank",
+    "place"
+  ],
+  "author": "",
+  "license": "MIT"
+}
