@@ -4,7 +4,7 @@
   "description": "Figure out 1st place, 2nd place, etc.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/.bin/tape test/*.js | ./node_modules/.bin/tap-dot"
   },
   "keywords": [
     "standings",
@@ -12,5 +12,9 @@
     "place"
   ],
   "author": "",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "tap-dot": "^0.2.3",
+    "tape": "^3.0.3"
+  }
 }
