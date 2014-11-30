@@ -2,9 +2,21 @@
 
 Figure out 1st place, 2nd place, etc.
 
-## Example
+## API
+
+### standings(array, rankBy)
 
 Adds rank property to each item in array.
+
+#### array
+
+Array of objects to rank.
+
+#### rankBy
+
+Name of number property to rank objects by.
+
+## Example
 
 ```
 var standings = require('standings');
@@ -18,10 +30,18 @@ var teams = [
 
 standings(teams, 'score');
 
-teams[0].rank // => 2
-teams[1].rank // => 1
-teams[2].rank // => 2
-teams[3].rank // => 4
+teams.forEach(function(team) {
+  console.log(team.name + ' ranks ' + team.rank);
+});
+```
+
+will print
+
+```
+Team A ranks 2
+Team B ranks 1
+Team C ranks 2
+Team D ranks 4
 ```
 
 ## Install
