@@ -56,3 +56,23 @@ test('items with multiple ties', function(t) {
   t.equal(teams[5].rank, 5);
   t.equal(teams[6].rank, 7);
 });
+
+test('items with 3-way tie', function(t) {
+  t.plan(5);
+
+  var teams = [
+    {score: 70},
+    {score: 60},
+    {score: 60},
+    {score: 60},
+    {score: 30}
+  ];
+
+  standings(teams, 'score');
+
+  t.equal(teams[0].rank, 1);
+  t.equal(teams[1].rank, 2);
+  t.equal(teams[2].rank, 2);
+  t.equal(teams[3].rank, 2);
+  t.equal(teams[4].rank, 5);
+});
