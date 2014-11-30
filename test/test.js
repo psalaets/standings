@@ -76,3 +76,19 @@ test('items with 3-way tie', function(t) {
   t.equal(teams[3].rank, 2);
   t.equal(teams[4].rank, 5);
 });
+
+test('items array is not modified', function(t) {
+  t.plan(3);
+
+  var teams = [
+    {score: 30, name: 'A'},
+    {score: 10, name: 'B'},
+    {score: 30, name: 'C'}
+  ];
+
+  standings(teams, 'score');
+
+  t.equal(teams[0].name, 'A');
+  t.equal(teams[1].name, 'B');
+  t.equal(teams[2].name, 'C');
+});
