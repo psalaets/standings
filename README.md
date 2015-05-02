@@ -28,7 +28,7 @@ Array of objects where each object looks like
 }
 ```
 
-sorted in rank order (1, 2, 3, etc).
+The array is sorted in rank order (1, 2, 3, etc).
 
 ## Example
 
