@@ -18,7 +18,7 @@ Name of number property to rank objects by.
 
 ## Example
 
-```
+```js
 var standings = require('standings');
 
 var teams = [
