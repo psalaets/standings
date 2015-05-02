@@ -157,3 +157,20 @@ test('does not add rank property to item (as of 2.0.0)', function(t) {
 
   t.deepEqual(teams[0], {score: 30, name: 'A'});
 });
+
+test('can rank non-objects', function(t) {
+  t.plan(6);
+
+  var numbers = [5, 1, 4];
+
+  var rankings = standings(numbers, function(item) {
+    return item;
+  });
+
+  t.equal(rankings[0].rank, 1);
+  t.equal(rankings[0].item, 5);
+  t.equal(rankings[1].rank, 2);
+  t.equal(rankings[1].item, 4);
+  t.equal(rankings[2].rank, 3);
+  t.equal(rankings[2].item, 1);
+});

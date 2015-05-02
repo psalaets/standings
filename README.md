@@ -8,7 +8,7 @@ Figure out 1st place, 2nd place, etc.
 
 #### items
 
-Array of objects to rank.
+Array to create standings from. Array elements can be any type.
 
 #### rankBy
 
