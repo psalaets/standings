@@ -1,6 +1,6 @@
-module.exports = applyRanks;
+module.exports = makeStandings;
 
-function applyRanks(items, rankBy) {
+function makeStandings(items, rankBy) {
   rankBy = makeRankByFunction(rankBy);
 
   // create array with holder objects
