@@ -4,11 +4,9 @@ Figure out 1st place, 2nd place, etc.
 
 ## API
 
-### standings(array, rankBy)
+### standings(items, rankBy)
 
-Adds rank property to each item in array.
-
-#### array
+#### items
 
 Array of objects to rank.
 
@@ -19,32 +17,50 @@ Can be either
 - string - Name of number property to rank items by.
 - function(item) - returns value to rank item by.
 
+#### Returns
+
+Array of objects where each object looks like
+
+```js
+{
+  item: <item from items parameter>,
+  rank: number
+}
+```
+
+sorted in rank order (1, 2, 3, etc).
+
 ## Example
 
 ```js
 var standings = require('standings');
 
-var teams = [
-  {score: 20, name: 'Team A'},
-  {score: 30, name: 'Team B'},
-  {score: 20, name: 'Team C'},
-  {score: 10, name: 'Team D'}
+var scores = [
+  {score: 20, name: 'Amy'},
+  {score: 30, name: 'Bob'},
+  {score: 20, name: 'Chris'},
+  {score: 10, name: 'Don'}
 ];
 
-standings(teams, 'score');
-
-teams.forEach(function(team) {
-  console.log(team.name + ' ranks ' + team.rank);
-});
+var rankings = standings(scores, 'score');
 ```
 
-will print
+`rankings` looks like
 
-```
-Team A ranks 2
-Team B ranks 1
-Team C ranks 2
-Team D ranks 4
+```js
+[{
+  item: {score: 30, name: 'Bob'},
+  rank: 1
+}, {
+  item: {score: 20, name: 'Amy'},
+  rank: 2
+}, {
+  item: {score: 20, name: 'Chris'},
+  rank: 2
+}, {
+  item: {score: 10, name: 'Don'},
+  rank: 4
+}]
 ```
 
 ## Install

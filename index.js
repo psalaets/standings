@@ -3,25 +3,36 @@ module.exports = applyRanks;
 function applyRanks(items, rankBy) {
   rankBy = makeRankByFunction(rankBy);
 
+  // order items by rank
   items = items.slice();
-
   items.sort(function(a, b) {
     // highest first
     return rankBy(b) - rankBy(a);
   });
 
+  var rankings = [];
+
   items.forEach(function(item, index, items) {
-    var previousItem = items[index - 1];
+    var rankWrapper = {
+      item: item
+    };
+    rankings.push(rankWrapper);
+
+    var prevWrapper = rankings[index - 1];
 
     // if item's rank value is same as prev item's rank value
-    if (previousItem && rankBy(item) === rankBy(previousItem)) {
+    if (prevWrapper && rankBy(item) === rankBy(prevWrapper.item)) {
       // they're tied and have same rank
-      item.rank = previousItem.rank;
+      rankWrapper.rank = prevWrapper.rank;
     } else {
       // item's rank is its one-based position in array
-      item.rank = index + 1;
+      rankWrapper.rank = index + 1;
     }
+
+    // console.log('rank by value:', rankBy(item), 'rank:', rankWrapper.rank);
   });
+
+  return rankings;
 }
 
 /**
