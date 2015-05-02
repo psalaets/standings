@@ -1,7 +1,7 @@
 var test = require('tape');
 var standings = require('../');
 
-test('items with no ties', function(t) {
+test('rankBy can be property name of ranking value', function(t) {
   t.plan(3);
 
   var teams = [
@@ -11,6 +11,26 @@ test('items with no ties', function(t) {
   ];
 
   standings(teams, 'score');
+
+  t.equal(teams[0].rank, 2);
+  t.equal(teams[1].rank, 3);
+  t.equal(teams[2].rank, 1);
+});
+
+test('rankBy can be function returning ranking value', function(t) {
+  t.plan(3);
+
+  function rankBy(item) {
+    return item.score;
+  }
+
+  var teams = [
+    {score: 20},
+    {score: 10},
+    {score: 30}
+  ];
+
+  standings(teams, rankBy);
 
   t.equal(teams[0].rank, 2);
   t.equal(teams[1].rank, 3);

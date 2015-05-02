@@ -14,7 +14,10 @@ Array of objects to rank.
 
 #### rankBy
 
-Name of number property to rank objects by.
+Can be either
+
+- string - Name of number property to rank items by.
+- function(item) - returns value to rank item by.
 
 ## Example
 
